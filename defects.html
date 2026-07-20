@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPC Simulator - Defects Per Wafer (Attribute)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Semiconductor SPC Simulator - Defects Per Wafer</h1>
+        <nav>
+            <a href="index.html">← Back to Variable Data (Thickness)</a>
+        </nav>
+    </header>
+
+    <div class="controls">
+        <label>Student Number: 
+            <input type="text" id="studentId" placeholder="e.g. S12345678" value="S12345678">
+        </label>
+        <button id="startBtn">START FACTORY</button>
+        <button id="pauseBtn" disabled>PAUSE</button>
+        <button id="resetBtn">RESET</button>
+        <button id="downloadBtn" disabled>DOWNLOAD CSV</button>
+    </div>
+
+    <div class="dials">
+        <div class="dial-container">
+            <label>Machine A Offset</label>
+            <input type="range" id="dialA" min="-10" max="10" value="0" step="0.1">
+            <span id="valueA">0.0</span>
+        </div>
+        <div class="dial-container">
+            <label>Machine B Offset</label>
+            <input type="range" id="dialB" min="-10" max="10" value="0" step="0.1">
+            <span id="valueB">0.0</span>
+        </div>
+        <div class="dial-container">
+            <label>Machine C Offset</label>
+            <input type="range" id="dialC" min="-10" max="10" value="0" step="0.1">
+            <span id="valueC">0.0</span>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="defectChart" style="max-height: 380px; min-height: 380px;"></canvas>
+    </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="defects.js"></script>
+
+<script>
+        document.getElementById('studentId').addEventListener('input', function() {
+        localStorage.setItem('studentId', this.value);
+    });
+
+    // When starting factory, also pass via URL
+    document.getElementById('startBtn').addEventListener('click', function() {
+        const sid = document.getElementById('studentId').value.trim();
+        if (sid) localStorage.setItem('studentId', sid);
+    });
+// Auto-load student number from index.html
+window.addEventListener('load', function() {
+    const savedId = localStorage.getItem('studentId');
+    if (savedId) {
+        document.getElementById('studentId').value = savedId;
+    }
+    
+    // Also sync changes back
+    document.getElementById('studentId').addEventListener('input', function() {
+        localStorage.setItem('studentId', this.value);
+    });
+});
+</script>
+</body>
+</html>
