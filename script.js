@@ -60,17 +60,18 @@ function preGenerateAllData(studentId) {
     const baseSeed = params.seed;
     
     for (let wafer = 1; wafer <= maxWafers; wafer++) {
+        let ii = 0;
         ['A', 'B', 'C'].forEach(machine => {
             const offset = parseFloat(document.getElementById(`dial${machine}`).value);
             
             const seed = baseSeed + (wafer * 17) + (machine.charCodeAt(0) * 11);
             const noise = (seededRandom(seed) - 0.5) * 0.72;
             
-            const meanVal = params.baseMean + 
+            const meanVal = params.baseMean + ii +
                            (offset * 0.092) + 
                            noise + 
                            (machine === 'B' ? (seededRandom(baseSeed + wafer) * 0.22) : 0);
-            
+            ii = ii + 1;
             allData.push({
                 index: allData.length + 1,
                 wafer: wafer,
