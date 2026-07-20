@@ -1,0 +1,91 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 20px;
+    line-height: 1.5;
+}
+header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+nav a {
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover { text-decoration: underline; }
+
+.controls {
+    background: #1e2937;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.controls button {
+    padding: 10px 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+#startBtn { background: #22c55e; color: black; }
+#pauseBtn { background: #eab308; color: black; }
+#resetBtn { background: #ef4444; color: white; }
+#downloadBtn { background: #3b82f6; color: white; }
+
+.dials {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+.dial-container {
+    text-align: center;
+}
+.dial-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+input[type="range"] {
+    width: 220px;
+}
+
+.chart-container {
+    background: #1e2937;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+.dials-spec {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.spec-box {
+    background: #1e2937;
+    padding: 15px 20px;
+    border-radius: 8px;
+    min-width: 260px;
+    align-self: center;
+    border: 2px solid #60a5fa;
+}
+
+.spec-box strong {
+    color: #60a5fa;
+}
