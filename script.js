@@ -93,7 +93,7 @@ function regenerateMachineData(machine, params) {
         const seed = baseSeed + (waferNum * 17) + (machine.charCodeAt(0) * 11);
         const noise = (seededRandom(seed) - 0.5) * 0.72;
         
-        const meanVal = params.baseMean + 
+        const meanVal = params.baseMean + ii +
                        (offset * 0.092) + 
                        noise + 
                        (machine === 'B' ? (seededRandom(baseSeed + waferNum) * 0.22) : 0);
